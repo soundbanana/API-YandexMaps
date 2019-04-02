@@ -45,7 +45,6 @@ class MapParams(object):
         if event.key == pygame.K_PAGEDOWN and self.zoom > 0:
             self.zoom -= 1
         if event.key == pygame.K_UP and self.lat + LAT_STEP * 2 ** (15 - self.zoom) < 85:
-            print(self.lat + LAT_STEP * 2 ** (15 - self.zoom))
             self.lat += LAT_STEP * 2 ** (15 - self.zoom)
         if event.key == pygame.K_DOWN and self.lat - LAT_STEP * 2 ** (15 - self.zoom) > -85:
             self.lat -= LAT_STEP * 2 ** (15 - self.zoom)
@@ -53,6 +52,13 @@ class MapParams(object):
             self.lon -= LON_STEP * 2 ** (15 - self.zoom)
         if event.key == pygame.K_RIGHT and self.lon + LON_STEP * 2 ** (15 - self.zoom) < 180:
             self.lon += LON_STEP * 2 ** (15 - self.zoom)
+
+        if event.key == pygame.K_1:
+            self.type = "map"
+        if event.key == pygame.K_2:
+            self.type = "sat"
+        if event.key == pygame.K_3:
+            self.type = "sat,skl"
 
     # Преобразование экранных координат в географические.
     def screen_to_geo(self, pos):
