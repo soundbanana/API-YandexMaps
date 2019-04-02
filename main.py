@@ -44,13 +44,14 @@ class MapParams(object):
             self.zoom += 1
         if event.key == pygame.K_PAGEDOWN and self.zoom > 0:
             self.zoom -= 1
-        if event.key == pygame.K_UP:
+        if event.key == pygame.K_UP and self.lat + LAT_STEP * 2 ** (15 - self.zoom) < 85:
+            print(self.lat + LAT_STEP * 2 ** (15 - self.zoom))
             self.lat += LAT_STEP * 2 ** (15 - self.zoom)
-        if event.key == pygame.K_DOWN:
+        if event.key == pygame.K_DOWN and self.lat - LAT_STEP * 2 ** (15 - self.zoom) > -85:
             self.lat -= LAT_STEP * 2 ** (15 - self.zoom)
-        if event.key == pygame.K_LEFT:
+        if event.key == pygame.K_LEFT and self.lon - LON_STEP * 2 ** (15 - self.zoom) > -180:
             self.lon -= LON_STEP * 2 ** (15 - self.zoom)
-        if event.key == pygame.K_RIGHT:
+        if event.key == pygame.K_RIGHT and self.lon + LON_STEP * 2 ** (15 - self.zoom) < 180:
             self.lon += LON_STEP * 2 ** (15 - self.zoom)
 
     # Преобразование экранных координат в географические.
