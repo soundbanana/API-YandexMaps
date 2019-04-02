@@ -44,6 +44,12 @@ class MapParams(object):
             self.zoom += 1
         if event.key == pygame.K_PAGEDOWN and self.zoom > 0:
             self.zoom -= 1
+        if event.key == pygame.K_1:
+            self.type = "map"
+        if event.key == pygame.K_2:
+            self.type = "sat"
+        if event.key == pygame.K_3:
+            self.type = "sat,skl"
 
     # Преобразование экранных координат в географические.
     def screen_to_geo(self, pos):
